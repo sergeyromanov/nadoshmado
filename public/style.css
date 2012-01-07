@@ -1,0 +1,35 @@
+BODY { background-color: white;
+	font-family: Verdana, monospace; 
+	}
+.st { 	font-variant: small-caps; 
+	color:white; 
+	font-family: Verdana, monospace;
+	font-weight:normal}
+P.qq {font-family: Verdana, monospace;
+	color:black;
+	background-color: white;
+	
+	}
+.text { font-size:small; }
+
+.hidden {display: none;}
+
+.qq {color: black;}
+
+A{color: black;}
+
+.dot {padding:3px; background-color: rgb(255,255,220); position: absolute; display:none; font-size:x-small }
+
+DIV.ya {position:absolute; left:2%; top:3%; width: 75%;}
+
+DIV.facts {position: absolute; width:15%; top:27% ; left: 80%;}
+
+DIV.menu { position: absolute; width:15%; height:98%;}
+
+DIV.center { position: absolute; left:15%; width:70%; height:98%;}
+
+DIV.margin { position: absolute; left:85%; width:14%; height:98%; padding-left:1%}
+
+.nod {text-decoration: none; color:red; font-size:small;}
+
+IMG.portrait {float:right;padding-left:3%;padding-bottom:10%;padding-top:20%;}

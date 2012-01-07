@@ -1,0 +1,57 @@
+% layout 'classic', title => 'Про маленьких надь';
+		
+	<DIV class="center" >
+	
+	<DIV id='div_with_facts' class="facts text" >
+		<P>У Нади наиглупейшая привычка говорить о себе в третьем лице </P>
+	</DIV>
+
+	<DIV class="ya">	
+		<IMG id=portrait3 class="portrait" src="pictures/zenme.jpg" width=66%></IMG>
+		<IMG id=portrait0 class="portrait hidden" src="pictures/lasvegas.jpg" width=66%></IMG>
+		<IMG id=portrait1 class="portrait hidden" src="pictures/ataman.jpg" width=66%></IMG>
+		<IMG id=portrait2 class="portrait hidden" src="pictures/smile1.jpg" width=66%></IMG>
+		<P class="text" >
+			Здравствуйте, говорю я вам с интонацией Бориса Борисовича Гребенщикова, начинающего передачу "Аэростат". 
+            <br/>Перед вами ремейк культового творения четырехлетней давности <a href="http://cs.usu.edu.ru/home/nado" target="blanck">(вот этого)</a>.
+            <br/>Сайт посвящён маленьким надям, ламам и зомби. Вскоре я придумаю, как сделать всё очень классно, и загуляем.
+            <br/>Пока наслаждайтесь тем, что есть.
+			
+		</P>
+	</DIV>
+
+	<DIV class="text" style="background-color:rgb(60,60,60) ; position: absolute; left: 30%; top:5%; width:65%; padding:2ex;">
+
+		<a id=legend3 style="color:white; "  
+  			href='javascript:switch_portraits(3)'
+			onmouseover='javascript:details(3)'
+			onmouseout='javascript:def(3)'
+			onclick='javascript:random_fact()'
+		>Now</a>
+		
+		<a id=legend0 style="color:white; position: absolute; left:12em;"  
+  			href='javascript:switch_portraits(0)'
+			onmouseover='javascript:details(0)'
+			onmouseout='javascript:def(0)'
+			onclick='javascript:random_fact()'
+		>Спб</a>
+
+		<a id=legend1 style="color:white; position: absolute; left:23em;"  
+   			href='javascript:switch_portraits(1)'
+			onmouseover='javascript:details(1)'
+			onmouseout='javascript:def(1)'
+			onclick='javascript:random_fact()'
+		>Киров</a>
+
+		<a id=legend2 style="color:white; position: absolute; left:41em;"  
+   			href='javascript:switch_portraits(2)'
+			onmouseover='javascript:details(2)'
+			onmouseout='javascript:def(2)'
+			onclick='javascript:random_fact()'
+		>Екб</a>
+
+		
+	</DIV>	
+		
+	</DIV> 
+

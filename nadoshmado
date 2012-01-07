@@ -1,0 +1,62 @@
+#!/usr/bin/env perl
+use Mojolicious::Lite;
+use MongoDB;
+
+# Documentation browser under "/perldoc"
+plugin 'PODRenderer';
+
+my $db = MongoDB::Connection->new->nadoshmado;
+
+my $posts = $db -> posts;
+
+my %qq = (
+          "menupics" => {1 => "dreadlocks", 2 => "zengiraffe", 3 => "mulledwine"}, 
+          "menurefs" => {1 => "/about", 2 => "/", 3 => "/guestbook"},
+          "ddd" => {"bbb" => 'hhhb', "ccc" => "ppp"}
+          );
+
+get '/' => sub {
+  my $self = shift;
+  $self->render('index', %qq);
+};
+
+get '/about' => sub {
+  my $self = shift;
+  $self->render('ya', %qq);
+};
+
+get '/guestbook' => sub {
+  my $self = shift;
+  
+  my @all = $posts->find->sort({posttime => -1})->all;
+  my $posts = join "\n", map {$_->{'message'}} @all;
+  
+  $self->render('guestbook', %qq, posts => \@all);
+  
+  #$self->render('guestbook', %qq,  name => "", message => "");
+};
+
+post '/send' => sub {
+  my $self = shift;
+  
+  my $name  = $self->req->param('name');
+  my $message = $self->req->param('message');
+  
+  $name =~ s/^\s+//;
+  $name =~ s/\s+$//;
+  $message =~ s/^\s+//;
+  $message =~ s/\s+$//;
+  
+  if($name&&$message)
+  {
+  $posts->insert({
+            name    => $name,
+            message   => $message,
+            posttime    => time,
+        });
+  }
+  $self->redirect_to('guestbook');
+};
+
+
+app->start;

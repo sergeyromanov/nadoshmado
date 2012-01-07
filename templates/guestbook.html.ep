@@ -1,0 +1,28 @@
+% layout 'classic', title => 'Уютно и лампово';
+        
+    <DIV class="center" >
+
+    <h3>this is a guestbook</h3>
+        
+    <FORM NAME="gos" METHOD="post" ACTION="/send">
+        
+            Имя: <INPUT TYPE="TEXT" NAME="name" VALUE="" SIZE="25" MAXLENGTH="25">
+            <INPUT TYPE="CHECKBOX" NAME="pretag"> 
+            включить PRE <br/><br/>
+            Сообщение:<br/>
+            <TEXTAREA  NAME="message" VALUE="" rows=6 cols=70 ></TEXTAREA><br/><br/>
+        
+            <INPUT TYPE="SUBMIT" VALUE="Отправить"> 
+    </FORM>
+    
+    <%for (@$posts) {%>
+        <p>
+        At <i><%= scalar(localtime($_->{posttime})) %></i> <b><%= $_->{name} %></b> wrote:<br>
+        <%=$_->{message}%>
+        
+        </p>
+    
+    <%}%> 
+    
+    </DIV> 
+
