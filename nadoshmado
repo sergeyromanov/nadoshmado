@@ -1,6 +1,10 @@
-#!/usr/bin/env perl
+﻿#!/usr/bin/env perl
 use Mojolicious::Lite;
 use MongoDB;
+use MongoDB::OID;
+use Digest::MD5 'md5_hex';
+use Data::Dumper;
+use Try::Tiny;
 
 # Documentation browser under "/perldoc"
 plugin 'PODRenderer';
@@ -12,9 +16,9 @@ my $posts = $db -> posts;
 my %qq = (
           "menupics" => {1 => "dreadlocks", 2 => "zengiraffe", 3 => "mulledwine"}, 
           "menurefs" => {1 => "/about", 2 => "/", 3 => "/guestbook"},
-          "ddd" => {"bbb" => 'hhhb', "ccc" => "ppp"}
+          "menutitles" => {1 => "about myself and this site", 2 => "everything", 3 => "communication"},
           );
-
+          
 get '/' => sub {
   my $self = shift;
   $self->render('index', %qq);
@@ -25,15 +29,24 @@ get '/about' => sub {
   $self->render('ya', %qq);
 };
 
+sub isnado
+{
+    my $self = shift;
+    try{
+        my $user = $db->users->find_one({name => 'nado'});
+        return ($self->session->{uid} eq $user->{_id}->to_string);
+    }catch{return 0;}
+}
+
 get '/guestbook' => sub {
   my $self = shift;
   
   my @all = $posts->find->sort({posttime => -1})->all;
   my $posts = join "\n", map {$_->{'message'}} @all;
+
+  my $isnado = isnado($self);
   
-  $self->render('guestbook', %qq, posts => \@all);
-  
-  #$self->render('guestbook', %qq,  name => "", message => "");
+  $self->render('guestbook', %qq, posts => \@all, nado => $isnado);
 };
 
 post '/send' => sub {
@@ -41,22 +54,115 @@ post '/send' => sub {
   
   my $name  = $self->req->param('name');
   my $message = $self->req->param('message');
+  my $tags = $self->req->param('tagson');
   
   $name =~ s/^\s+//;
   $name =~ s/\s+$//;
   $message =~ s/^\s+//;
   $message =~ s/\s+$//;
   
+  unless($tags)
+  {
+    $message =~ s/</&lt;/g;
+    $message =~ s/>/&gt;/g;
+    $message =~ s/\n/<br\/>/g;
+    $name =~ s/</&lt;/g;
+    $name =~ s/>/&gt;/g;
+    $name =~ s/\n/<br\/>/g;
+  }
+  
   if($name&&$message)
   {
-  $posts->insert({
-            name    => $name,
-            message   => $message,
-            posttime    => time,
-        });
+        if($name=~/nado/i and !isnado($self))
+        {
+           $self->flash(login_taken => 'please chose another login. this name is already taken'); 
+        }
+        else
+        {
+            $posts->insert({
+                name    => $name,
+                message   => $message,
+                posttime    => time,
+            });
+        }
   }
   $self->redirect_to('guestbook');
 };
+
+get '/delete' => sub {
+    my $self = shift;
+    
+    if(isnado($self))
+    {
+        my $id  = MongoDB::OID ->new(value => $self->req->param('id'));
+        $posts->remove({_id => $id});
+    }
+    $self->redirect_to('guestbook');
+};
+
+#get '/removeall' => sub {
+#    my $self = shift;
+#    
+#    $posts->remove;
+#    
+#    $self->redirect_to('guestbook');
+#};
+
+sub add_user {
+	my ($user_name, $user_pass) = @_;
+
+	my $uid = $db->users->insert({name => $user_name, pass => md5_hex($user_pass)});
+	my $err = $db->last_error;
+	die $err->{err} if ($err->{ok} == 1 and defined $err->{err});
+	return $uid->to_string;
+}
+
+get '/addnadouser' => sub {
+	my $self = shift;
+    
+    my $user = $db->users->find_one({name => 'nado'});
+    
+    unless ($user)
+    {
+        add_user('nado', 'Password123!');
+    }
+    $self->redirect_to('/login');
+};
+
+sub check_user {
+	my ($user_name, $user_pass) = @_;
+
+	my $user = $db->users->find_one({name => $user_name, pass => md5_hex($user_pass)});
+	die "User $user_name does not exist" unless $user;
+	return $user->{_id}->to_string;
+}
+
+get '/login' => sub {
+  my $self = shift;
+  
+  $self->render('login', %qq);
+};
+
+post '/login' => sub {
+	my $self = shift;
+    
+    try {
+        my $uid = check_user($self->param('user_name'), $self->param('user_pass'));
+        $self->session->{uid} = $uid;
+        $self->redirect_to('guestbook');
+    }catch {
+		$self->flash(login_error => 'wrong user name or password');
+        $self->redirect_to('/login');
+	}
+};
+
+get '/logout' => sub {
+	my $self = shift;
+	delete $self->session->{uid};
+
+	$self->redirect_to('guestbook');
+};
+
 
 
 app->start;

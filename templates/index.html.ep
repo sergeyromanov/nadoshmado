@@ -1,7 +1,8 @@
 % layout 'classic', title => 'Надежда-шмадежда';
 
 <DIV class="center" style="background-image: url('pictures/label.jpg'); background-repeat:no-repeat; background-position: top center;">
-    <P style="color:red; position: absolute; bottom:1%; left:4%;" onclick='javascript:noting_happens()'>сайт для выпендрёжа</P></DIV>
+    
+    <!--P style="color:red; position: absolute; bottom:1%; left:4%;" onclick='javascript:noting_happens()'>сайт для выпендрёжа</P-->
 </DIV>	
 
 

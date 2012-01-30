@@ -1,27 +1,46 @@
 % layout 'classic', title => 'Уютно и лампово';
         
     <DIV class="center" >
-
-    <h3>this is a guestbook</h3>
-        
-    <FORM NAME="gos" METHOD="post" ACTION="/send">
-        
-            Имя: <INPUT TYPE="TEXT" NAME="name" VALUE="" SIZE="25" MAXLENGTH="25">
-            <INPUT TYPE="CHECKBOX" NAME="pretag"> 
-            включить PRE <br/><br/>
-            Сообщение:<br/>
-            <TEXTAREA  NAME="message" VALUE="" rows=6 cols=70 ></TEXTAREA><br/><br/>
-        
-            <INPUT TYPE="SUBMIT" VALUE="Отправить"> 
-    </FORM>
     
-    <%for (@$posts) {%>
-        <p>
-        At <i><%= scalar(localtime($_->{posttime})) %></i> <b><%= $_->{name} %></b> wrote:<br>
-        <%=$_->{message}%>
-        
+    <%if($nado){%>
+        <h3> hi, nado, let's rock!</h3>
+        <p style ="color: grey;" class="text guestbook">
+            <a style ="color: grey;" href = "/logout">logout</a>
         </p>
-    
+    <%}else{%>
+        <h3>this is a guestbook.</h3>
+    <%}%>
+   
+    <FORM class="guestbook text" NAME="gos" METHOD="post" ACTION="/send">
+        
+            Name: <INPUT TYPE="TEXT" NAME="name" VALUE="" SIZE="25" MAXLENGTH="25">
+             <%if($nado){%>
+                <INPUT TYPE="CHECKBOX" NAME="tagson">use html tags
+             <%}%>
+            <br/><br/>
+            Message:<br/>
+            <TEXTAREA  NAME="message" VALUE="" rows=4 cols=50 ></TEXTAREA><br/><br/>
+        
+            <INPUT TYPE="SUBMIT" VALUE="Send"> 
+    </FORM>
+       
+       <h4>
+            %= flash 'login_taken'
+       </h4>
+       
+    <%for (@$posts) {%>
+        <p class="text darkgrey">
+            <b><%== $_->{name} %>:</b><br/>
+            <p class="text shadow guestbook">
+               <%==$_->{message}%>
+            </p>
+            <p style ="color: grey;" class="text guestbook">
+                <i><%== scalar(localtime($_->{posttime})) %></i>
+                <%if($nado){%>
+                <a style ="color: grey;" href = "/delete?id=<%==$_->{_id}%>">delete</a>
+                <%}%>
+            </p>
+        </p>
     <%}%> 
     
     </DIV> 

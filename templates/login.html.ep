@@ -1,0 +1,21 @@
+% layout 'classic', title => 'Login';
+
+
+<DIV class="center" >
+
+    <h3>please log in</h3>
+
+<form class="guestbook text" action="/login" method=post>
+    Login:<br/>
+    <input type=text name=user_name>
+    <br/><br/>
+    Password:<br/>
+    <input type=password name=user_pass><br/><br/>
+    <input type=submit value=Login><br/>
+</form>
+
+<h3>
+%= flash 'login_error'
+</h3>
+
+</DIV>

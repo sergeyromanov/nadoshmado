@@ -1,37 +1,50 @@
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><%= title %></title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+     html { overflow-y: scroll; }
+   .shadow {
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Для Firefox */
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Для Safari и Chrome */
+    box-shadow: 0 0 8px rgba(0,0,0,0.3); /* Параметры тени */
+    padding:15px;
+   }
+  </style>
     <script src='ya.js'></script>
 
 </head>
 <body>
 
 <DIV class="margin text">
-        надо добавить счётчик или что-то такое
-        <!-- %=$$ddd{bbb} % --> 
+        <div class="qq text" align="right">
+            <br/>
+            get in touch:
+            <br/>
+            <!--a class="qq text" href="mailto:seizen@yandex.ru" title="email">seizen@yandex.ru</a><br/-->
+            <a class="qq text"  href="http://naddoo.livejournal.com/" title="lj" target=blank>naddoo.livejournal</a><br/>
+            <a class="qq text"  href="http://vk.com/nadoshmado" title="vk" target=blank>vk.com/nadoshmado</a><br/>
+            <a class="qq text"  href="/" target='_top' title="на главную" >sweet home</a>
+        </div>
 </DIV>
    
     <DIV class="menu">
         <% for (1..3) {%>
         
-        <a href="<%= $$menurefs{$_} %>" target='_top'>
+        <a href="<%= $$menurefs{$_} %>" title="<%= $$menutitles{$_} %>" target='_top'>
             <img id="<%=$_%>" src="pictures/<%= $$menupics{$_} %>1.jpg"
             width=80%
+            style="max-width:150px;"
             onmouseover='javascript: document.getElementById(<%=$_%>).src="pictures/<%= $$menupics{$_} %>2.jpg"; '
             onmouseout='javascript: document.getElementById(<%=$_%>).src="pictures/<%= $$menupics{$_} %>1.jpg"; '>
         </a>
+        <br/>
         <%}%>
         
                         
-        <div class="qq text" style="position: absolute; bottom: 1%; color: black;">
-            ICQ:435000585<br/>
-            <a class="qq text" href="mailto:seizen@yandex.ru" title="email">seizen@yandex.ru</a><br/>
-            <a class="qq text"  href="http://naddoo.livejournal.com/" title="lj" target=blank>naddoo.livejournal.com</a><br/>
-            <a class="qq text"  href="http://vk.com/nadoshmado" title="vk" target=blank>vk.com/nadoshmado</a><br/>
-            <a class="qq text"  href="/" target='_top' title="на главную" >sweet home</a>
-        </div>
+        
         
     </DIV>
 

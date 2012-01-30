@@ -16,6 +16,7 @@
             <br/>Перед вами ремейк культового творения четырехлетней давности <a href="http://cs.usu.edu.ru/home/nado" target="blanck">(вот этого)</a>.
             <br/>Сайт посвящён маленьким надям, ламам и зомби. Вскоре я придумаю, как сделать всё очень классно, и загуляем.
             <br/>Пока наслаждайтесь тем, что есть.
+            <br/>Кастати говоря, именно эта страничка сделана очень криво, но мне лень её переписывать. 
 			
 		</P>
 	</DIV>
@@ -29,21 +30,21 @@
 			onclick='javascript:random_fact()'
 		>Now</a>
 		
-		<a id=legend0 style="color:white; position: absolute; left:12em;"  
+		<a id=legend0 style="color:white; position: absolute; left:8em;"  
   			href='javascript:switch_portraits(0)'
 			onmouseover='javascript:details(0)'
 			onmouseout='javascript:def(0)'
 			onclick='javascript:random_fact()'
 		>Спб</a>
 
-		<a id=legend1 style="color:white; position: absolute; left:23em;"  
+		<a id=legend1 style="color:white; position: absolute; left:16em;"  
    			href='javascript:switch_portraits(1)'
 			onmouseover='javascript:details(1)'
 			onmouseout='javascript:def(1)'
 			onclick='javascript:random_fact()'
 		>Киров</a>
 
-		<a id=legend2 style="color:white; position: absolute; left:41em;"  
+		<a id=legend2 style="color:white; position: absolute; left:24em;"  
    			href='javascript:switch_portraits(2)'
 			onmouseover='javascript:details(2)'
 			onmouseout='javascript:def(2)'
