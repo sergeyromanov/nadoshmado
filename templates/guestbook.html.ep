@@ -1,18 +1,17 @@
 % layout 'classic', title => 'Уютно и лампово';
         
-    <DIV class="center" >
+<DIV class="center text" >
     
     <%if($nado){%>
-        <h3> hi, nado, let's rock!</h3>
+        <h2> hi, nado, let's rock!</h2>
         <p style ="color: grey;" class="text guestbook">
             <a style ="color: grey;" href = "/logout">logout</a>
         </p>
     <%}else{%>
-        <h3>this is a guestbook.</h3>
+        <h2>this is a guestbook.</h2>
     <%}%>
    
-    <FORM class="guestbook text" NAME="gos" METHOD="post" ACTION="/send">
-        
+    <FORM class="guestbook" NAME="gos" METHOD="post" ACTION="/send">
             Name: <INPUT TYPE="TEXT" NAME="name" VALUE="" SIZE="25" MAXLENGTH="25">
              <%if($nado){%>
                 <INPUT TYPE="CHECKBOX" NAME="tagson">use html tags
@@ -20,28 +19,28 @@
             <br/><br/>
             Message:<br/>
             <TEXTAREA  NAME="message" VALUE="" rows=4 cols=50 ></TEXTAREA><br/><br/>
-        
             <INPUT TYPE="SUBMIT" VALUE="Send"> 
     </FORM>
-       
-       <h4>
-            %= flash 'login_taken'
-       </h4>
+    
+    <h4>
+        %= flash 'login_taken'
+    </h4>
        
     <%for (@$posts) {%>
-        <p class="text darkgrey">
+        <p class="darkgrey">
             <b><%== $_->{name} %>:</b><br/>
-            <p class="text shadow guestbook">
+            <p class="shadow guestbook" style="word-wrap:break-word;">
                <%==$_->{message}%>
             </p>
-            <p style ="color: grey;" class="text guestbook">
+            <p style ="color: grey;" class="guestbook">
                 <i><%== scalar(localtime($_->{posttime})) %></i>
+                <a style ="color: grey;" href = "/record?id=<%==$_->{_id}%>">open</a>
                 <%if($nado){%>
-                <a style ="color: grey;" href = "/delete?id=<%==$_->{_id}%>">delete</a>
+                    <a style ="color: grey;" href = "/delete?id=<%==$_->{_id}%>">delete</a>
                 <%}%>
             </p>
         </p>
     <%}%> 
     
-    </DIV> 
+</DIV> 
 

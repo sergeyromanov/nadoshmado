@@ -1,22 +1,23 @@
 % layout 'classic', title => 'Про маленьких надь';
-		
+	
+    <!--script>random_fact()</script-->
 	<DIV class="center" >
 	
-	<DIV id='div_with_facts' class="facts text" >
-		<P>У Нади наиглупейшая привычка говорить о себе в третьем лице </P>
+	<DIV id='div_with_facts' class="facts text">
+		<P> </P>
 	</DIV>
 
 	<DIV class="ya">	
-		<IMG id=portrait3 class="portrait" src="pictures/zenme.jpg" width=66%></IMG>
-		<IMG id=portrait0 class="portrait hidden" src="pictures/lasvegas.jpg" width=66%></IMG>
-		<IMG id=portrait1 class="portrait hidden" src="pictures/ataman.jpg" width=66%></IMG>
-		<IMG id=portrait2 class="portrait hidden" src="pictures/smile1.jpg" width=66%></IMG>
+		<IMG id=portrait3 class="portrait" src="pictures/zenme.jpg"></IMG>
+		<IMG id=portrait0 class="portrait hidden" src="pictures/lasvegas.jpg"></IMG>
+		<IMG id=portrait1 class="portrait hidden" src="pictures/ataman.jpg"></IMG>
+		<IMG id=portrait2 class="portrait hidden" src="pictures/smile1.jpg"></IMG>
 		<P class="text" >
 			Здравствуйте, говорю я вам с интонацией Бориса Борисовича Гребенщикова, начинающего передачу "Аэростат". 
             <br/>Перед вами ремейк культового творения четырехлетней давности <a href="http://cs.usu.edu.ru/home/nado" target="blanck">(вот этого)</a>.
             <br/>Сайт посвящён маленьким надям, ламам и зомби. Вскоре я придумаю, как сделать всё очень классно, и загуляем.
             <br/>Пока наслаждайтесь тем, что есть.
-            <br/>Кастати говоря, именно эта страничка сделана очень криво, но мне лень её переписывать. 
+            <br/>Кстати говоря, именно эта страничка сделана очень криво, но мне лень её переписывать. 
 			
 		</P>
 	</DIV>

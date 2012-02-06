@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Занимательная запись</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+     html { overflow-y: scroll; }
+   .shadow {
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3); 
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    padding:15px;
+   }
+  </style>
+    <script src='ya.js'></script>
+
+</head>
+
+<DIV class="center" >
+
+    <h4 class="darkgrey">record from <i><%== $record->{name} %>:</i></h4>
+ 
+    
+<p class="text darkgrey">
+            <p class="text shadow guestbook">
+               <%==$record->{message}%>
+            </p>
+            <p style ="color: grey;" class="text guestbook">
+                <i><%== scalar(localtime($record->{posttime})) %></i>
+                 <a style ="color: grey;" href = "/guestbook">guestbook</a>
+            </p>
+        </p>
+
+</DIV>
+
+</script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><div><img src="//mc.yandex.ru/watch/12152977" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

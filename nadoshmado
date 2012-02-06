@@ -15,7 +15,7 @@ my $posts = $db -> posts;
 
 my %qq = (
           "menupics" => {1 => "dreadlocks", 2 => "zengiraffe", 3 => "mulledwine"}, 
-          "menurefs" => {1 => "/about", 2 => "/", 3 => "/guestbook"},
+          "menurefs" => {1 => "/about", 2 => "/everything", 3 => "/guestbook"},
           "menutitles" => {1 => "about myself and this site", 2 => "everything", 3 => "communication"},
           );
           
@@ -27,6 +27,11 @@ get '/' => sub {
 get '/about' => sub {
   my $self = shift;
   $self->render('ya', %qq);
+};
+
+get '/everything' => sub {
+  my $self = shift;
+  $self->render('everything', %qq);
 };
 
 sub isnado
@@ -100,6 +105,16 @@ get '/delete' => sub {
     $self->redirect_to('guestbook');
 };
 
+get '/record' => sub {
+    my $self = shift;
+    
+    my $id  = MongoDB::OID ->new(value => $self->req->param('id'));
+    
+    my $record = $db->posts->find_one({_id => $id});
+    
+    $self->render('record', %qq, record => $record);
+};
+
 #get '/removeall' => sub {
 #    my $self = shift;
 #    
@@ -108,7 +123,8 @@ get '/delete' => sub {
 #    $self->redirect_to('guestbook');
 #};
 
-sub add_user {
+sub add_user
+{
 	my ($user_name, $user_pass) = @_;
 
 	my $uid = $db->users->insert({name => $user_name, pass => md5_hex($user_pass)});
@@ -116,18 +132,6 @@ sub add_user {
 	die $err->{err} if ($err->{ok} == 1 and defined $err->{err});
 	return $uid->to_string;
 }
-
-get '/addnadouser' => sub {
-	my $self = shift;
-    
-    my $user = $db->users->find_one({name => 'nado'});
-    
-    unless ($user)
-    {
-        add_user('nado', 'Password123!');
-    }
-    $self->redirect_to('/login');
-};
 
 sub check_user {
 	my ($user_name, $user_pass) = @_;

@@ -4,49 +4,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><%= title %></title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
-     html { overflow-y: scroll; }
-   .shadow {
-    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Для Firefox */
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Для Safari и Chrome */
-    box-shadow: 0 0 8px rgba(0,0,0,0.3); /* Параметры тени */
-    padding:15px;
-   }
-  </style>
     <script src='ya.js'></script>
-
 </head>
-<body>
+<body onload='javascript:random_fact()'>
 
 <DIV class="margin text">
-        <div class="qq text" align="right">
-            <br/>
-            get in touch:
-            <br/>
-            <!--a class="qq text" href="mailto:seizen@yandex.ru" title="email">seizen@yandex.ru</a><br/-->
-            <a class="qq text"  href="http://naddoo.livejournal.com/" title="lj" target=blank>naddoo.livejournal</a><br/>
-            <a class="qq text"  href="http://vk.com/nadoshmado" title="vk" target=blank>vk.com/nadoshmado</a><br/>
-            <a class="qq text"  href="/" target='_top' title="на главную" >sweet home</a>
-        </div>
+    <br/>
+    get in touch:<br/>
+    <a href="http://naddoo.livejournal.com/" title="lj" target=blank>naddoo.livejournal</a><br/>
+    <a href="http://vk.com/nadoshmado" title="vk" target=blank>vk.com/nadoshmado</a><br/>
+    <a href="/" target='_top' title="на главную" >sweet home</a>  
 </DIV>
 
-    <DIV class="menu">
-        <% for (1..3) {%>
-
-        <a href="<%= $$menurefs{$_} %>" title="<%= $$menutitles{$_} %>" target='_top'>
-            <img id="<%=$_%>" src="pictures/<%= $$menupics{$_} %>1.jpg"
-            width=80%
-            style="max-width:150px;"
-            onmouseover='javascript: document.getElementById(<%=$_%>).src="pictures/<%= $$menupics{$_} %>2.jpg"; '
-            onmouseout='javascript: document.getElementById(<%=$_%>).src="pictures/<%= $$menupics{$_} %>1.jpg"; '>
-        </a>
-        <br/>
-        <%}%>
-
-
-
-
-    </DIV>
+<DIV class="menu">
+    <% for (1..3) {%>
+    <a href="<%= $$menurefs{$_} %>" title="<%= $$menutitles{$_} %>" target='_top'>
+    <img id="<%=$_%>" src="pictures/<%= $$menupics{$_} %>1.jpg"
+        width=80%
+        style="max-width:150px;"
+        onmouseover='javascript: document.getElementById(<%=$_%>).src="pictures/<%= $$menupics{$_} %>2.jpg"; '
+        onmouseout='javascript: document.getElementById(<%=$_%>).src="pictures/<%= $$menupics{$_} %>1.jpg"; '>
+    </a><br/>
+    <%}%>
+</DIV>
 
 <%= content %>
 

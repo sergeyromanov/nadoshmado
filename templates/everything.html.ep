@@ -1,0 +1,97 @@
+% layout 'classic', title => 'Музей ненамеренного искусства';
+
+<DIV class="center darkgrey" >
+    
+<style>
+    P:nth-child(3n-1)
+	{
+		text-align:right;
+
+	}
+	P:nth-child(3n-2)
+	{
+		text-align:center;  
+	}
+	P:nth-child(3n)
+	{
+		text-align:left;     
+	}
+   
+    a#go
+    {
+         text-decoration: none;
+    }    
+    
+    p
+    {       
+        transition:rotate 2s, translate 2s;
+        -moz-transition:rotate 2s, -moz-transform 2s; /* Firefox 4 */
+        -webkit-transition:rotate 2s, -webkit-transform 2s; /* Safari and Chrome */
+        -o-transition:rotate 2s, -o-transform 2s; /* Opera */
+    }
+    
+    p:nth-child(3n):hover
+    {
+             
+        transform:rotate(-10deg);
+        -moz-transform:rotate(-10deg); /* Firefox 4 */
+        -webkit-transform:rotate(-10deg); /* Safari and Chrome */
+        -o-transform:rotate(-10deg); /* Opera */
+    }
+    
+    p:nth-child(3n-1):hover
+    {
+             
+        transform:rotate(10deg);
+        -moz-transform:rotate(10deg); /* Firefox 4 */
+        -webkit-transform:rotate(10deg); /* Safari and Chrome */
+        -o-transform:rotate(10deg); /* Opera */
+    }
+    
+    p:nth-child(3n-2):hover
+    {    
+        transform: translate(0px,30px);
+        -ms-transform: translate(0px,30px); /* IE 9 */
+        -webkit-transform: translate(0px,30px); /* Safari and Chrome */
+        -o-transform: translate(0px,30px); /* Opera */
+        -moz-transform: translate(0px,30px); /* Firefox */
+    }
+    h3
+    {
+        padding-bottom:10px;
+    }
+    
+</style>
+
+<h3>это музей ненамеренного искусства. здесь может быть что угодно<br/></h3>
+
+<p>
+	<a id="go" href="/" target='_top'>cамый нелогичный словарь<br/>
+	телега, старая как мир. 2002 год, 13-летние авторы, вот какая олдовая телега!
+    </a>
+</p>
+<p>
+	<a id="go" href="/" target='_top'>жеравчеги<br/>
+	очень гуманистические звери! &copyтов.Кордонский, Одесса
+   </a>
+</p>
+<p>
+	<a id="go" href="/" target=blank>почувствуй себя ж<br/>
+	ж - это жеравчек имеется ввиду. вы не подумайте чего
+   </a>
+</p>
+<p>
+	<a id="go" href="/" target='_top'>отдел кадров (двадцатьпятых)<br/>
+	фотогалерея
+  </a>
+</p>
+ <p>
+	<a id="go" href="/" target='_top'>стихой</a>
+</p>
+<p>
+	<a id="go" href="/" target='_top'>народные песни</a>
+</p>
+ 
+</DIV>	
+
+
