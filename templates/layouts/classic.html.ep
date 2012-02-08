@@ -47,7 +47,7 @@
 
 <!-- Orphus -->
 <script type="text/javascript" src="orphus/orphus.js"></script>
-<a href="http://orphus.ru" id="orphus" target="_blank"><img alt="Orphus system" src="orphus/orphus.gif" border="0" width="1" height="1" /></a>
+<a href="http://orphus.ru" id="orphus" target="_blank"><img alt="Orphus system" src="orphus/orphus.gif" border="0" width="80" height="15" /></a>
 <!-- Orphus -->
 
 
